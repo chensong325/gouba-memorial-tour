@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17120d">
+  <meta name="description" content="一盏马灯·照亮苟坝——苟坝会议数字导览。跟随虚拟导览员灯灯，沿五个真实点位了解1935年苟坝会议的历史。">
+  <meta property="og:title" content="一盏马灯·照亮苟坝｜苟坝会议数字导览">
+  <meta property="og:description" content="点击点亮马灯，跟随灯灯走过陈列馆、会议会址、真理小道、长五间与花茂村。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/cover-aerial-960.webp">
+  <title>一盏马灯·照亮苟坝｜苟坝会议数字导览</title>
+  <link rel="icon" href="assets/icons/lantern.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/images/cover-aerial-960.webp">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="is-intro-open">
+  <a class="skip-link" href="#stationPanel">跳到站点讲解</a>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-lantern" viewBox="0 0 24 24">
+      <path d="M8.4 4.4h7.2M9 4.4V3.1h6v1.3M7.1 7.2h9.8v2.1H7.1zM8 9.3v8.5h8V9.3M6.8 17.8h10.4v2.1H6.8zM10 7.2V5.4h4v1.8M12 11.1c1.1 1 1.6 1.9 1.6 2.8A1.6 1.6 0 0 1 12 15.5a1.6 1.6 0 0 1-1.6-1.6c0-.9.5-1.8 1.6-2.8Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-sound" viewBox="0 0 24 24">
+      <path d="M4 9.5v5h3.3l4.2 3.4V6.1L7.3 9.5H4Zm11.1-.8a5 5 0 0 1 0 6.6M17.8 6a8.4 8.4 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-muted" viewBox="0 0 24 24">
+      <path d="M4 9.5v5h3.3l4.2 3.4V6.1L7.3 9.5H4Zm10.1 1.2 4.4 4.4m0-4.4-4.4 4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-chat" viewBox="0 0 24 24">
+      <path d="M5 5.5h14v10H9l-4 3v-13Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M8.2 9h7.6M8.2 12h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-service" viewBox="0 0 24 24">
+      <path d="M5 10a7 7 0 0 1 14 0M4 10h16v7H4zM9 20h6M12 10v10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-progress" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="m8.2 12 2.5 2.5 5.4-5.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24">
+      <path d="m6.5 6.5 11 11m0-11-11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="m14.5 5-7 7 7 7M8 12h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+      <path d="m9.5 5 7 7-7 7M16 12H5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-listen" viewBox="0 0 24 24">
+      <path d="M5 13a7 7 0 0 1 14 0v4a2 2 0 0 1-2 2h-2v-5h4M5 14h4v5H7a2 2 0 0 1-2-2v-4Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-stop" viewBox="0 0 24 24">
+      <rect x="7" y="7" width="10" height="10" rx="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="m5 12.5 4.4 4.4L19 6.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24">
+      <path d="M12 2.8c.6 4.7 2.1 6.2 6.8 6.8-4.7.6-6.2 2.1-6.8 6.8-.6-4.7-2.1-6.2-6.8-6.8 4.7-.6 6.2-2.1 6.8-6.8ZM19 15.2c.3 2.1 1 2.8 3.1 3.1-2.1.3-2.8 1-3.1 3.1-.3-2.1-1-2.8-3.1-3.1 2.1-.3 2.8-1 3.1-3.1Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path d="M8.2 4.5 5.4 5.7c-1.2.5-1.5 2.2-1 3.7 2 6.1 5.1 9.2 11.2 11.2 1.5.5 3.2.2 3.7-1l1.2-2.8-5.1-2.1-1.6 2.1c-3.1-1.3-4.4-2.6-5.7-5.7l2.1-1.6-2-5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-car" viewBox="0 0 24 24">
+      <path d="m5 10 2-5h10l2 5M4 10h16v7H4zM6.5 17v2M17.5 17v2M7 13.5h2M15 13.5h2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-ticket" viewBox="0 0 24 24">
+      <path d="M4 6.5h16v4a2 2 0 0 0 0 3v4H4v-4a2 2 0 0 0 0-3v-4Zm10 0v11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-food" viewBox="0 0 24 24">
+      <path d="M5 10h14a7 7 0 0 1-14 0Zm7 7v3M8 20h8M7 6.5c.8-.8.8-1.6 0-2.4M12 6.5c.8-.8.8-1.6 0-2.4M17 6.5c.8-.8.8-1.6 0-2.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-craft" viewBox="0 0 24 24">
+      <path d="m9 4 1.2 3.2L13 8.4l-2.8 1.2L9 12.8 7.8 9.6 5 8.4l2.8-1.2L9 4Zm8 7c.5 2.1 1.5 3.1 3.6 3.6-2.1.5-3.1 1.5-3.6 3.6-.5-2.1-1.5-3.1-3.6-3.6 2.1-.5 3.1-1.5 3.6-3.6ZM7.5 15.5c4.2.2 7.3 2.3 9 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 10.5v6M12 7.4v.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24">
+      <path d="M4 5.5h6a2 2 0 0 1 2 2v11a2.5 2.5 0 0 0-2.5-2.5H4v-10.5Zm16 0h-6a2 2 0 0 0-2 2v11a2.5 2.5 0 0 1 2.5-2.5H20V5.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-share" viewBox="0 0 24 24">
+      <circle cx="18" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="18" cy="18.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="m8.3 10.8 7.4-4.1M8.3 13.2l7.4 4.1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+  </svg>
+
+  <section class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="intro-light" aria-hidden="true"></div>
+    <div class="intro-grain" aria-hidden="true"></div>
+    <div class="intro-topline">
+      <span>苟坝会议数字导览</span>
+      <button class="intro-sound" id="introSound" type="button" aria-pressed="false">
+        <svg class="icon"><use href="#icon-muted"></use></svg>
+        <span>声音关闭</span>
+      </button>
+    </div>
+    <div class="intro-content">
+      <div class="intro-copy">
+        <p class="intro-kicker"><span></span>1935.3.10—3.12 · 贵州遵义</p>
+        <h1 id="introTitle"><span>一盏马灯</span><span>照亮苟坝</span></h1>
+        <p class="intro-lead">把那个夜晚的一盏马灯，交给今天的你亲手提起。</p>
+        <p class="intro-desc">跟随虚拟导览员「灯灯」，沿五个真实点位逐站行走，在灯光、问答与故事中，走进一场决定红军命运的会议。</p>
+
+        <div class="intro-mode-label">选择你的讲解方式</div>
+        <div class="intro-modes" id="introModes" role="group" aria-label="选择讲解模式">
+          <button class="intro-mode is-active" type="button" data-intro-mode="study" aria-pressed="true">
+            <span class="intro-mode-icon"><svg class="icon"><use href="#icon-book"></use></svg></span>
+            <span><strong>研学模式</strong><small>完整史实 · 因果链条</small></span>
+            <span class="intro-mode-check"><svg class="icon"><use href="#icon-check"></use></svg></span>
+          </button>
+          <button class="intro-mode" type="button" data-intro-mode="family" aria-pressed="false">
+            <span class="intro-mode-icon"><svg class="icon"><use href="#icon-spark"></use></svg></span>
+            <span><strong>亲子模式</strong><small>故事语言 · 适合家庭</small></span>
+            <span class="intro-mode-check"><svg class="icon"><use href="#icon-check"></use></svg></span>
+          </button>
+        </div>
+
+        <div class="intro-start-row">
+          <span class="intro-start-hint">点击右侧马灯，或按下按钮开始</span>
+          <button class="intro-skip" id="skipIntro" type="button">跳过动画</button>
+        </div>
+      </div>
+
+      <div class="intro-lantern-wrap">
+        <div class="intro-rings" aria-hidden="true"></div>
+        <button class="intro-lantern-button" id="igniteButton" type="button" aria-label="点亮马灯，开始苟坝会议导览">
+          <svg class="intro-lantern-svg" viewBox="0 0 240 360" aria-hidden="true">
+            <defs>
+              <linearGradient id="lampMetal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#806b4d"/>
+                <stop offset=".45" stop-color="#3b3025"/>
+                <stop offset="1" stop-color="#17130f"/>
+              </linearGradient>
+              <radialGradient id="lampFlame" cx=".5" cy=".7" r=".65">
+                <stop offset="0" stop-color="#fff6c7"/>
+                <stop offset=".32" stop-color="#ffd477"/>
+                <stop offset=".68" stop-color="#e77626"/>
+                <stop offset="1" stop-color="#9f3414" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="lampGlass" cx=".5" cy=".5" r=".65">
+                <stop offset="0" stop-color="#ffe4a1" stop-opacity=".62"/>
+                <stop offset=".65" stop-color="#d89543" stop-opacity=".16"/>
+                <stop offset="1" stop-color="#7f4b22" stop-opacity=".03"/>
+              </radialGradient>
+              <filter id="lampBlur"><feGaussianBlur stdDeviation="12"/></filter>
+            </defs>
+            <ellipse class="intro-lamp-shadow" cx="120" cy="336" rx="86" ry="16" fill="#000" opacity=".38" filter="url(#lampBlur)"/>
+            <path class="intro-flame-glow" d="M120 171c34 28 52 57 52 91 0 37-23 63-52 63s-52-26-52-63c0-34 18-63 52-91Z" fill="url(#lampFlame)" filter="url(#lampBlur)" opacity="0"/>
+            <path d="M84 52h72M91 52v-16h58v16M78 84h84v30H78zM72 114h96v15H72z" fill="url(#lampMetal)" stroke="#b49766" stroke-width="2"/>
+            <path d="M82 129h76v139H82z" fill="#231b13" stroke="#8d744e" stroke-width="3"/>
+            <path d="M93 139h54v118H93z" fill="url(#lampGlass)" stroke="#caa86e" stroke-width="2"/>
+            <path d="M120 139v118M93 188h54M93 215h54" stroke="#caa86e" stroke-width="1.5" opacity=".54"/>
+            <path d="M120 169c13 16 21 30 21 45 0 15-9 25-21 25s-21-10-21-25c0-15 8-29 21-45Z" fill="#f6b44b" opacity=".16"/>
+            <path class="intro-flame-core" d="M120 189c8 12 13 22 13 32 0 10-6 17-13 17s-13-7-13-17c0-10 5-20 13-32Z" fill="url(#lampFlame)" opacity="0"/>
+            <path d="M85 268h70v14H85zM75 282h90v20H75zM96 302h48v12H96zM104 314h32v18h-32z" fill="url(#lampMetal)" stroke="#a1885e" stroke-width="2"/>
+            <path d="M84 74c-36-4-52-19-59-44M156 74c36-4 52-19 59-44" fill="none" stroke="#b49766" stroke-width="4" stroke-linecap="round"/>
+            <path d="M116 36h8v-11h-8z" fill="#a1885e"/>
+            <circle class="intro-lamp-spark" cx="120" cy="220" r="3" fill="#fff2b4" opacity="0"/>
+          </svg>
+        </button>
+        <div class="intro-lantern-caption">
+          <span class="intro-lamp-line"></span>
+          <span><strong>点亮马灯</strong><small>开始五站导览</small></span>
+          <svg class="icon intro-arrow"><use href="#icon-arrow-right"></use></svg>
+        </div>
+      </div>
+    </div>
+    <div class="intro-footer">
+      <span>一个人 · 一盏灯 · 一条山路</span>
+      <span>历史内容依据馆方提供材料整理</span>
+    </div>
+  </section>
+  <div class="app-shell" id="appShell">
+    <header class="topbar">
+      <a class="brand" href="#station-1" id="brandHome" aria-label="回到导览第一站">
+        <span class="brand-mark"><svg class="icon"><use href="#icon-lantern"></use></svg></span>
+        <span class="brand-copy">
+          <strong>一盏马灯·照亮苟坝</strong>
+          <small>苟坝会议数字导览</small>
+        </span>
+      </a>
+
+      <div class="mode-switch" role="group" aria-label="讲解模式">
+        <button type="button" data-mode="study" class="is-active" aria-pressed="true">研学</button>
+        <button type="button" data-mode="family" aria-pressed="false">亲子</button>
+        <span class="mode-indicator" aria-hidden="true"></span>
+      </div>
+
+      <div class="top-actions">
+        <button class="top-action" id="askGuideButton" type="button" aria-label="向灯灯提问">
+          <svg class="icon"><use href="#icon-chat"></use></svg>
+          <span class="action-label">问灯灯</span>
+        </button>
+        <button class="top-action" id="soundToggle" type="button" aria-pressed="false" aria-label="开启声音">
+          <svg class="icon icon-sound-on"><use href="#icon-sound"></use></svg>
+          <svg class="icon icon-sound-off"><use href="#icon-muted"></use></svg>
+          <span class="action-label">声音</span>
+        </button>
+        <button class="top-action" id="serviceButton" type="button" aria-label="查看游览服务信息">
+          <svg class="icon"><use href="#icon-service"></use></svg>
+          <span class="action-label">服务</span>
+        </button>
+        <button class="top-action progress-action" id="progressButton" type="button" aria-label="查看导览进度">
+          <svg class="icon"><use href="#icon-progress"></use></svg>
+          <span class="action-label">进度</span>
+          <span class="top-progress" id="topProgress">0/5</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="tour-layout">
+      <section class="map-panel" aria-label="苟坝会议五站游线地图">
+        <div class="map-frame" id="mapFrame" style="--lx:27%;--ly:73%">
+          <div class="map-surface" id="mapSurface" tabindex="0" role="region" aria-label="交互地图。长按地图可提起马灯，左右方向键可切换站点。">
+            <svg class="map-art" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="mapSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#1d2928"/>
+                  <stop offset=".48" stop-color="#252a23"/>
+                  <stop offset="1" stop-color="#171510"/>
+                </linearGradient>
+                <radialGradient id="moonGlow" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#f0d8a2" stop-opacity=".38"/>
+                  <stop offset=".36" stop-color="#c4ad7a" stop-opacity=".11"/>
+                  <stop offset="1" stop-color="#c4ad7a" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="ridgeBack" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#273b38"/>
+                  <stop offset="1" stop-color="#18201e"/>
+                </linearGradient>
+                <linearGradient id="ridgeMid" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#30413a"/>
+                  <stop offset="1" stop-color="#1a201a"/>
+                </linearGradient>
+                <linearGradient id="hillFront" x1="0" y1="0" x2="1" y2=".9">
+                  <stop offset="0" stop-color="#293328"/>
+                  <stop offset="1" stop-color="#161a14"/>
+                </linearGradient>
+                <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#727d68" stop-opacity=".18"/>
+                  <stop offset=".5" stop-color="#b4b794" stop-opacity=".33"/>
+                  <stop offset="1" stop-color="#4d5f58" stop-opacity=".12"/>
+                </linearGradient>
+                <pattern id="fieldLines" width="16" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">
+                  <path d="M0 0v12" stroke="#c1a56d" stroke-width=".7" opacity=".12"/>
+                </pattern>
+                <filter id="mapBlur"><feGaussianBlur stdDeviation="9"/></filter>
+              </defs>
+
+              <rect width="1000" height="720" fill="url(#mapSky)"/>
+              <circle cx="825" cy="118" r="150" fill="url(#moonGlow)"/>
+              <circle cx="825" cy="118" r="18" fill="#ead6a4" opacity=".14"/>
+
+              <g opacity=".74">
+                <path d="M-80 265C60 160 136 191 235 247c81 46 147 31 235-37 99-76 168-88 287-14 89 55 149 52 290-20v235H-80Z" fill="url(#ridgeBack)"/>
+                <path d="M-40 313c121-78 196-64 281-4 76 54 141 47 238-21 92-65 182-59 279 11 68 49 130 47 233-9v185H-40Z" fill="url(#ridgeMid)" opacity=".9"/>
+                <path d="M0 373c91-57 167-64 246-12 89 59 176 51 283-13 96-58 167-48 245 8 87 63 151 49 226 2v196H0Z" fill="url(#hillFront)"/>
+              </g>
+
+              <g opacity=".34" fill="none" stroke="#94a07d" stroke-width="1.1">
+                <path d="M60 233c75-31 105-8 157 13M129 205c35 6 69 22 102 49M690 214c62-30 108-29 168-2M753 178c24 12 49 28 76 54"/>
+                <path d="M275 400c69-20 130-18 187 7M633 351c53-21 99-19 149 3"/>
+              </g>
+
+              <path d="M-30 560c122-35 216-57 309-44 114 16 170 91 278 76 119-17 151-119 261-133 70-9 134 18 227 20" fill="none" stroke="url(#riverGrad)" stroke-width="21" stroke-linecap="round"/>
+              <path d="M-30 560c122-35 216-57 309-44 114 16 170 91 278 76 119-17 151-119 261-133 70-9 134 18 227 20" fill="none" stroke="#d4d2b3" stroke-opacity=".1" stroke-width="2"/>
+
+              <g transform="translate(535 545) rotate(-10)">
+                <path d="M0 0h230v96H0z" fill="url(#fieldLines)" opacity=".72"/>
+                <path d="M0 24h230M0 48h230M0 72h230M38 0v96M76 0v96M114 0v96M152 0v96M190 0v96" stroke="#bca774" stroke-width="1" opacity=".13"/>
+              </g>
+              <g transform="translate(682 275) rotate(-13)">
+                <path d="M0 0h162v78H0z" fill="url(#fieldLines)" opacity=".54"/>
+                <path d="M0 26h162M0 52h162M40 0v78M81 0v78M122 0v78" stroke="#bca774" stroke-width="1" opacity=".12"/>
+              </g>
+              <g transform="translate(120 455) rotate(9)">
+                <path d="M0 0h137v70H0z" fill="url(#fieldLines)" opacity=".44"/>
+                <path d="M0 23h137M0 47h137M34 0v70M68 0v70M102 0v70" stroke="#bca774" stroke-width="1" opacity=".1"/>
+              </g>
+
+              <g class="map-village" opacity=".88">
+                <g transform="translate(220 520)">
+                  <path d="M0 22 22 4l22 18v24H0Z" fill="#352f24" stroke="#7e6f55" stroke-width="1.2"/>
+                  <path d="M-5 24 22 0l27 24" fill="none" stroke="#9d8863" stroke-width="2"/>
+                  <rect x="15" y="28" width="13" height="18" fill="#b18a55" opacity=".22"/>
+                </g>
+                <g transform="translate(286 543) scale(.78)">
+                  <path d="M0 22 22 4l22 18v24H0Z" fill="#352f24" stroke="#7e6f55" stroke-width="1.2"/>
+                  <path d="M-5 24 22 0l27 24" fill="none" stroke="#9d8863" stroke-width="2"/>
+                  <rect x="15" y="28" width="13" height="18" fill="#b18a55" opacity=".22"/>
+                </g>
+                <g transform="translate(805 385) scale(.9)">
+                  <path d="M0 22 22 4l22 18v24H0Z" fill="#352f24" stroke="#7e6f55" stroke-width="1.2"/>
+                  <path d="M-5 24 22 0l27 24" fill="none" stroke="#9d8863" stroke-width="2"/>
+                  <rect x="15" y="28" width="13" height="18" fill="#b18a55" opacity=".22"/>
+                </g>
+              </g>
+
+              <g class="map-trees" fill="#354337" opacity=".82">
+                <g transform="translate(92 300)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(180 335) scale(.8)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(340 246) scale(1.2)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(405 322) scale(.72)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(648 432) scale(.9)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(735 208) scale(.72)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(884 250)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(930 424) scale(.76)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+                <g transform="translate(770 545) scale(.64)"><path d="M0 20 14-9 28 20Z"/><path d="M2 10 14-17 26 10Z" fill="#435242"/><rect x="12" y="19" width="4" height="12" fill="#514536"/></g>
+              </g>
+
+              <g class="map-truth-tree" transform="translate(572 368)">
+                <circle cx="0" cy="0" r="19" fill="#4e604b" opacity=".42"/>
+                <path d="M0 22v-20m0 10-12-13M0 12l12-15M0 4 1-8M-6 3l-14-5M6 1l14-4" stroke="#8d7952" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="-13" cy="-6" r="10" fill="#536851" opacity=".72"/>
+                <circle cx="12" cy="-11" r="12" fill="#5d7158" opacity=".7"/>
+                <circle cx="0" cy="-16" r="13" fill="#586c53" opacity=".7"/>
+              </g>
+
+              <path d="M0 0h1000v720H0z" fill="none" stroke="#d4bd8c" stroke-opacity=".08" stroke-width="14"/>
+            </svg>
+
+            <svg class="map-route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <path class="route-shadow" d="M12 86C18 83 20 76 27 73C32 71 37 64 42 59C48 54 55 63 60 67C66 72 69 55 74 48C80 40 84 37 89 32" fill="none" stroke="#0b0907" stroke-width="7" stroke-linecap="round"/>
+              <path class="route-gold" d="M12 86C18 83 20 76 27 73C32 71 37 64 42 59C48 54 55 63 60 67C66 72 69 55 74 48C80 40 84 37 89 32" fill="none" stroke="#c9964f" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 5" vector-effect="non-scaling-stroke"/>
+            </svg>
+
+            <div class="light-mask" aria-hidden="true"></div>
+            <div class="light-glow" aria-hidden="true"></div>
+            <div class="map-vignette" aria-hidden="true"></div>
+
+            <div class="map-status">
+              <span class="map-status-index" id="mapStationIndex">01</span>
+              <span class="map-status-divider">/ 05</span>
+              <strong id="mapStationName">陈列馆</strong>
+            </div>
+
+            <div class="visitor-node" style="left:12%;top:86%">
+              <span class="visitor-dot"></span>
+              <span>游客中心 · 起点</span>
+            </div>
+
+            <div class="station-nodes" id="stationNodes"></div>
+
+            <div class="guide" id="guide" style="left:27%;top:73%" aria-hidden="true">
+              <span class="guide-shadow"></span>
+              <span class="guide-light"></span>
+              <svg class="guide-svg" viewBox="0 0 96 132">
+                <g class="guide-body">
+                  <path d="M30 57c2-13 9-20 18-20s16 7 18 20l5 34H25l5-34Z" fill="#6f2d26"/>
+                  <path d="M31 56c-6 8-8 19-7 31M65 56c6 8 8 19 7 31" stroke="#5b241e" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="48" cy="31" r="18" fill="#e3b17e"/>
+                  <path d="M31 28c0-13 8-20 17-20 11 0 18 7 18 21-6-3-11-8-14-13-3 8-10 12-21 12Z" fill="#7e2b21"/>
+                  <path d="M29 24c6-1 11-5 15-12 4 7 10 11 20 12v5H29v-5Z" fill="#8f3427"/>
+                  <path d="M42 26c3-2 9-2 12 0" fill="none" stroke="#5b241e" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="42" cy="33" r="1.8" fill="#312018"/>
+                  <circle cx="54" cy="33" r="1.8" fill="#312018"/>
+                  <path class="guide-mouth" d="M45 40c2 2 5 2 7 0" fill="none" stroke="#8b4b39" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M34 65c-5 8-8 15-8 22" fill="none" stroke="#e3b17e" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M62 65c5 6 8 11 10 16" fill="none" stroke="#e3b17e" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M34 89h28l4 26H30l4-26Z" fill="#8b3a2b"/>
+                  <path d="M34 92h28M39 104h18" fill="none" stroke="#b25d45" stroke-width="2"/>
+                  <path d="M37 115 35 128M59 115l2 13" stroke="#3c2a21" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M27 92c-2-6-5-11-9-14M67 91c3-5 6-9 10-11" fill="none" stroke="#e3b17e" stroke-width="4" stroke-linecap="round"/>
+                </g>
+                <g class="guide-lantern-group">
+                  <path d="M75 80v8M69 88h12M69 88v20h12V88M67 108h16M71 113h8v10h-8z" fill="none" stroke="#d0ac6c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="71" y="91" width="8" height="14" rx="2" fill="#ffd476" opacity=".82"/>
+                  <path d="M71 95c3-3 5-3 8 0v9c-3 2-5 2-8 0Z" fill="#fff2b4" opacity=".54"/>
+                </g>
+              </svg>
+            </div>
+
+            <div class="map-compass" aria-hidden="true">
+              <span class="compass-n">N</span>
+              <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-opacity=".26"/><path d="m20 7 4 13-4 13-4-13Z" fill="none" stroke="currentColor" stroke-opacity=".58"/><path d="m20 7 4 13h-8Z" fill="currentColor" fill-opacity=".66"/></svg>
+            </div>
+
+            <div class="map-hint" id="mapHint">
+              <svg class="icon"><use href="#icon-lantern"></use></svg>
+              <span>长按地图，提起马灯</span>
+            </div>
+
+            <div class="map-scale">手绘示意图</div>
+          </div>
+        </div>
+
+        <div class="map-progress">
+          <div class="progress-copy">
+            <span>五站游线</span>
+            <strong id="progressText">第 1 站 · 共 5 站</strong>
+          </div>
+          <div class="progress-track" id="progressTrack" aria-label="游线进度"></div>
+          <div class="progress-score">
+            <svg class="icon"><use href="#icon-spark"></use></svg>
+            <span><strong id="lightScore">0</strong> / 10 真理之光</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-panel" id="stationPanel" aria-label="站点讲解">
+        <article class="station-article" id="stationArticle">
+          <div class="station-loading">
+            <span class="loading-lantern"><svg class="icon"><use href="#icon-lantern"></use></svg></span>
+            <p>正在点亮讲解……</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div>
+      <strong>一盏马灯·照亮苟坝</strong>
+      <span>1935.3.10—3.12 · 贵州遵义苟坝</span>
+    </div>
+    <p>历史内容依据馆方提供材料整理。「灯灯」为虚拟导览员，地图为手绘示意图，服务信息以景区当日公告为准。</p>
+    <div class="footer-actions">
+      <button id="aboutButton" type="button">导览说明</button>
+      <button id="footerAskButton" type="button">问灯灯</button>
+    </div>
+  </footer>
+
+  <div class="overlay-backdrop" id="overlayBackdrop" hidden></div>
+
+  <aside class="drawer drawer-service" id="serviceDrawer" role="dialog" aria-modal="true" aria-labelledby="serviceTitle" aria-hidden="true" hidden>
+    <div class="drawer-head">
+      <div>
+        <p class="eyebrow">VISITOR SERVICES</p>
+        <h2 id="serviceTitle">游线服务信息</h2>
+      </div>
+      <button class="icon-button drawer-close" type="button" data-close-drawer aria-label="关闭服务信息">
+        <svg class="icon"><use href="#icon-close"></use></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <p class="drawer-intro">从遵义出发，走进苟坝。开放时间、交通、风味与体验信息汇总在这里。</p>
+      <div class="service-list" id="serviceList"></div>
+      <div class="service-note">
+        <svg class="icon"><use href="#icon-info"></use></svg>
+        <p>会址与陈列馆免费参观，实名登记入园。开放时间与活动安排可能调整，出行前建议电话确认。</p>
+      </div>
+      <button class="text-button about-trigger" id="drawerAboutButton" type="button">查看导览说明与史实边界</button>
+      <button class="text-button reset-progress" id="resetProgressButton" type="button">清除本机导览进度</button>
+    </div>
+  </aside>
+
+  <aside class="drawer drawer-guide" id="guideDrawer" role="dialog" aria-modal="true" aria-labelledby="guideTitle" aria-hidden="true" hidden>
+    <div class="drawer-head">
+      <div class="guide-heading">
+        <span class="mini-guide"><svg class="icon"><use href="#icon-lantern"></use></svg></span>
+        <div>
+          <p class="eyebrow">ASK LAMP</p>
+          <h2 id="guideTitle">问灯灯</h2>
+        </div>
+      </div>
+      <button class="icon-button drawer-close" type="button" data-close-drawer aria-label="关闭问答">
+        <svg class="icon"><use href="#icon-close"></use></svg>
+      </button>
+    </div>
+    <div class="guide-chat" id="guideChat" aria-live="polite"></div>
+    <div class="guide-suggestions" id="guideSuggestions" aria-label="建议问题"></div>
+    <form class="guide-form" id="guideForm">
+      <label class="sr-only" for="guideInput">向灯灯提问</label>
+      <input id="guideInput" name="question" type="text" maxlength="80" autocomplete="off" placeholder="问一个关于苟坝会议的问题…">
+      <button type="submit" aria-label="发送问题">
+        <svg class="icon"><use href="#icon-arrow-right"></use></svg>
+      </button>
+    </form>
+    <p class="guide-note">当前为基于馆方材料的预设问答，已预留 AI 扩展接口。</p>
+  </aside>
+
+  <div class="modal completion-modal" id="completionModal" role="dialog" aria-modal="true" aria-labelledby="completionTitle" hidden>
+    <div class="modal-card completion-card">
+      <button class="icon-button modal-close" type="button" data-close-modal aria-label="关闭进度面板">
+        <svg class="icon"><use href="#icon-close"></use></svg>
+      </button>
+      <div id="completionContent"></div>
+    </div>
+  </div>
+
+  <div class="lightbox-modal" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览" hidden>
+    <button class="lightbox-close icon-button" type="button" data-close-lightbox aria-label="关闭图片预览">
+      <svg class="icon"><use href="#icon-close"></use></svg>
+    </button>
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" type="button" aria-label="上一张图片">
+      <svg class="icon"><use href="#icon-arrow-left"></use></svg>
+    </button>
+    <figure>
+      <img id="lightboxImage" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" type="button" aria-label="下一张图片">
+      <svg class="icon"><use href="#icon-arrow-right"></use></svg>
+    </button>
+  </div>
+
+  <div class="modal about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" hidden>
+    <div class="modal-card about-card">
+      <button class="icon-button modal-close" type="button" data-close-modal aria-label="关闭导览说明">
+        <svg class="icon"><use href="#icon-close"></use></svg>
+      </button>
+      <p class="eyebrow">ABOUT THIS GUIDE</p>
+      <h2 id="aboutTitle">导览说明</h2>
+      <div class="about-copy">
+        <p>本站把 1935 年 3 月那个夜晚的一盏马灯，交给今天的游客亲手提起。五站游线对应苟坝会议陈列馆、苟坝会议会址、真理小道、红军马灯馆·长五间和花茂村方向。</p>
+        <p>「灯灯」是本站的虚拟数字导览员，不是历史人物，也不扮演任何具体历史人物。研学模式沿用馆方材料中的解说词；亲子模式在不改变史实骨架的前提下做通俗化表达。</p>
+        <p>景区地图与场景光效为手绘或数字示意，不作为实际导航依据。本页历史内容依据馆方提供材料整理，未虚构人物对白或新增史料出处。</p>
+        <p>语音朗读使用设备自带的中文语音引擎；声音效果由浏览器实时合成。两者均不需要上传个人信息。</p>
+      </div>
+      <div class="about-meta">
+        <span>1935.3.10—3.12</span>
+        <span>贵州省遵义市播州区枫香镇苟坝村</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="sr-only" id="liveRegion" aria-live="polite"></div>
+
+  <noscript>
+    <div class="noscript-note">本站需要启用 JavaScript 才能使用交互导览。请启用后刷新页面。</div>
+  </noscript>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
