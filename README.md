@@ -4,6 +4,10 @@
 
 网站是纯静态单页应用，无框架、无 CDN、无后端，可直接部署到 GitHub Pages、Netlify、Vercel、Nginx 或任意静态网站空间。
 
+**在线访问：** https://chensong325.github.io/gouba-memorial-tour/
+
+**GitHub 仓库：** https://github.com/chensong325/gouba-memorial-tour
+
 ## 功能
 
 - 开屏点亮马灯，选择研学或亲子讲解模式。
